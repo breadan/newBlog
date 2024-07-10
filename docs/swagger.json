@@ -1,0 +1,174 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Blog API",
+        "version": "1.0.0",
+        "description": " for user authentication"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:7000"
+        }
+    ],
+    "paths": {
+        "/url": {
+            "get": {
+                "description": "New endpoint",
+                "responses": {
+                    "200": {
+                        "description": "New response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "": ""
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth/register": {
+            "post": {
+                "summary": "Register a new user",
+                "description": "Create a new user account",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "JohnDoe"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "pitacix602@bitofee.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "password123"
+                                    },
+                                    "age": {
+                                        "type": "integer",
+                                        "example": 25
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "password",
+                                    "age"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful account creation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "user": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string",
+                                                    "example": "123456"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "JohnDoe"
+                                                },
+                                                "email": {
+                                                    "type": "string",
+                                                    "example": "pitacix602@bitofee.com"
+                                                },
+                                                "age": {
+                                                    "type": "integer",
+                                                    "example": 25
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "summary": "Log in a user",
+                "description": "Authenticate a user and return a token",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "pitacix602@bitofee.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "password123"
+                                    }
+                                },
+                                "required": [
+                                    "email",
+                                    "password"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful login",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_id": {
+                                            "type": "string",
+                                            "example": "65b54c2af4755cf58cab30ef"
+                                        },
+                                        "isAdmin": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "profilePhoto": {
+                                            "type": "object",
+                                            "properties": {
+                                                "url": {
+                                                    "type": "string",
+                                                    "example": "https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=2048x2048&w=is&k=20&c=6hQNACQQjktni8CxSS_QSPqJv2tycskYmpFGzxv3FNs="
+                                                },
+                                                "publicId": {
+                                                    "type": "string",
+                                                    "example": null
+                                                }
+                                            }
+                                        },
+                                        "token": {
+                                            "type": "string",
+                                            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
