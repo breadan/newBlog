@@ -6,8 +6,8 @@ import { multerMiddle } from '../middlewares/photoUpload.js';
 const postRouter = express.Router();
 
 postRouter.post(
-  '/createPost/:id',
-  verifyUserAccess,
+  '/createPost',
+  verifyToken,
   multerMiddle().single('image'),
   createPost
 );
