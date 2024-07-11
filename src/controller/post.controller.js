@@ -4,15 +4,16 @@ import * as path from 'path';
 import { postModel, validatePost } from '../models/post.model.js';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { cloudinaryUpload } from '../utils/cloudinary.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-/*
-#Desc: create new post
-#Rout: /api/posts/register
-#Method: post
-#Access: Private (only logIn User)
+/** 
+@desc    create new post
+@route   /api/posts/register
+@method  POST
+@access  private 
 */
 const createPost = asyncHandler(async (req, res) => {
   //check image
@@ -34,7 +35,7 @@ const createPost = asyncHandler(async (req, res) => {
     'uploads',
     `${req.file.filename}`
   );
-  const result = await cloudinaryUploadImage(imagePath);
+  const result = await cloudinaryUpload(imagePath);
   //create new post
   const { title, description, category, image } = req.body;
   // const { user } = req.params;

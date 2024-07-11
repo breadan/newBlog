@@ -1,0 +1,354 @@
+{
+	"info": {
+		"_postman_id": "efcd6fe1-afa7-4155-b6c1-45983d99668f",
+		"name": "mernBlog",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26934934",
+		"_collection_link": "https://bold-robot-536085.postman.co/workspace/new~f3c2888f-3b08-4fd4-a3d4-91d614e37abf/collection/26934934-efcd6fe1-afa7-4155-b6c1-45983d99668f?action=share&source=collection_link&creator=26934934"
+	},
+	"item": [
+		{
+			"name": "auther",
+			"item": [
+				{
+					"name": "signUp",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Breadanalaa\",\n    \"email\":\"7c407c3c89@emailcbox.pro\",\n    \"password\": \"Ja1010\",\n    \"age\": \"35\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Domain}}/api/auth/register",
+							"host": [
+								"{{Domain}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "LogIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"7c407c3c89@emailcbox.pro\",\r\n    \"password\": \"Ja1010\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Domain}}/api/auth/login",
+							"host": [
+								"{{Domain}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "AllUsers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGJlNzU4OTBhYjc1ZmFjZjYzNTYzZCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcyMDQ0NjMwMSwiZXhwIjoxNzIwNDQ5OTAxfQ.gLVIn2UzlvUuXpyTlGDAufzNomlkxjUDoJtN09j5scc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Domain}}/api/users/profile",
+							"host": [
+								"{{Domain}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"profile"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGJlNzU4OTBhYjc1ZmFjZjYzNTYzZCIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MjA0NDUwMzQsImV4cCI6MTcyMDQ0ODYzNH0.Tx1IFxFCI0dk2nEiS36I3iykGyfhn0CULYriNJmBrUI",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UsersCount",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGJlNzU4OTBhYjc1ZmFjZjYzNTYzZCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcyMDQ0NjMwMSwiZXhwIjoxNzIwNDQ5OTAxfQ.gLVIn2UzlvUuXpyTlGDAufzNomlkxjUDoJtN09j5scc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Domain}}/api/users/count",
+							"host": [
+								"{{Domain}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Domain}}/api/users/profile/668be6eaa23acc9daeb835f9",
+							"host": [
+								"{{Domain}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"profile",
+								"668be6eaa23acc9daeb835f9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUser",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGJlNzU4OTBhYjc1ZmFjZjYzNTYzZCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcyMDQ0NzE1NSwiZXhwIjoxNzIwNDUwNzU1fQ.pq4yz3jEU7OxHbTq-3i3fHbYo3YGtaej7lKWIPBjBb4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"update23\",\r\n    \"password\": \"Ja1010\",\r\n    \"age\": \"55\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Domain}}/api/users/profile/668be75890ab75facf63563d",
+							"host": [
+								"{{Domain}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"profile",
+								"668be75890ab75facf63563d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "uploadIMG",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Barer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGVjZjBhODU1MDkzNTA0NmJjNzQxOCIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MjA2NDY2MjEsImV4cCI6MTcyMDY1MDIyMX0.MATFl-zc9rLOvIP-NbZnSQEqcmzoeDq7DiMjn4rsrdo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1ef1874f-99bb-4960-8354-5b8cc023642c"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Domain}}/api/users/profile/profile-Photo/668ecf0a8550935046bc7418",
+							"host": [
+								"{{Domain}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"profile",
+								"profile-Photo",
+								"668ecf0a8550935046bc7418"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGJlNzU4OTBhYjc1ZmFjZjYzNTYzZCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcyMDQ0NzE1NSwiZXhwIjoxNzIwNDUwNzU1fQ.pq4yz3jEU7OxHbTq-3i3fHbYo3YGtaej7lKWIPBjBb4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Domain}}/api/users/profile/668be6eaa23acc9daeb835f9",
+							"host": [
+								"{{Domain}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"profile",
+								"668be6eaa23acc9daeb835f9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "addPost",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Barer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGVjZjBhODU1MDkzNTA0NmJjNzQxOCIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MjA2OTYzMzUsImV4cCI6MTcyMDY5OTkzNX0.-0RTEqeKblNHWCjg8bNFQYzutdrU5nlJfZE3mKa_FqE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "postman-cloud:///1ef18757-9363-4290-8f89-498a2e8cdac2"
+								},
+								{
+									"key": "title",
+									"value": "first post",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "first category",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "played",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{Domain}}/api/post/createPost",
+							"host": [
+								"{{Domain}}"
+							],
+							"path": [
+								"api",
+								"post",
+								"createPost"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}

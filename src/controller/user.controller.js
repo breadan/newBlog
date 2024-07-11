@@ -10,11 +10,11 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-/*
-#Desc: Get All Users Profile
-#Rout: /api/users/profile
-#Method: get
-#Access: Only Admin
+/**
+@desc     Get All Users Profile
+@route   /api/users/profile
+@method  GET
+@access  private (Only admins)
 */
 
 const getAllUsers = asyncHandler(async (req, res) => {

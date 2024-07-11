@@ -8,11 +8,11 @@ import {
 } from '../models/user.model.js';
 import { sendEmail } from '../emailes/nodemailer.js';
 import { ApiError } from '../utils/apiError.js';
-/*
-#Desc: Register
-#Rout: /api/auth/register
-#Method: post
-#Access: public
+/** 
+@desc    Register
+@route   /api/auth/register
+@method  POST
+@access  public
 */
 
 const registerUser = asyncHandler(async (req, res) => {

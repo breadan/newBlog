@@ -3,7 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import swaggerUi from 'swagger-ui-express';
 
-import './config/connection.js';
+import './src/config/connection.js';
 import authRouter from './src/routes/auth.routs.js';
 import userRouter from './src/routes/user.rout.js';
 import { ApiError } from './src/utils/apiError.js';
