@@ -28,6 +28,7 @@ const createPost = asyncHandler(async (req, res) => {
       .json({ message: error.details[0].message });
   }
   //upload photo
+<<<<<<< HEAD
   const imagePath = path.join(
     __dirname,
     '..',
@@ -36,9 +37,14 @@ const createPost = asyncHandler(async (req, res) => {
     `${req.file.filename}`
   );
   const result = await cloudinaryUpload(imagePath);
+=======
+  const imagePath = path.join(__dirname, 'uploads', `${req.file.filename}`);
+  const result = await cloudinaryUpload(imagePath);
+
+>>>>>>> 6c6a286cc4d48f322cfadc314b7ffe16d195cc5f
   //create new post
   const { title, description, category, image } = req.body;
-  // const { user } = req.params;
+  console.log(req.body);
   const newPost = await postModel.create({
     title,
     description,
@@ -46,6 +52,7 @@ const createPost = asyncHandler(async (req, res) => {
     user: req.user.id,
     image: { url: result.secure_url, publicId: result.public_Id },
   });
+
   res.status(201).json({
     message: 'Post Created Successfully',
     newPost,
