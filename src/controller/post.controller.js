@@ -4,6 +4,7 @@ import * as path from 'path';
 import { postModel, validatePost } from '../models/post.model.js';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { cloudinaryUpload } from '../utils/cloudinary.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -27,17 +28,12 @@ const createPost = asyncHandler(async (req, res) => {
       .json({ message: error.details[0].message });
   }
   //upload photo
-  const imagePath = path.join(
-    __dirname,
-    '..',
-    '..',
-    'uploads',
-    `${req.file.filename}`
-  );
-  const result = await cloudinaryUploadImage(imagePath);
+  const imagePath = path.join(__dirname, 'uploads', `${req.file.filename}`);
+  const result = await cloudinaryUpload(imagePath);
+
   //create new post
   const { title, description, category, image } = req.body;
-  // const { user } = req.params;
+  console.log(req.body);
   const newPost = await postModel.create({
     title,
     description,
@@ -45,6 +41,7 @@ const createPost = asyncHandler(async (req, res) => {
     user: req.user.id,
     image: { url: result.secure_url, publicId: result.public_Id },
   });
+
   res.status(201).json({
     message: 'Post Created Successfully',
     newPost,

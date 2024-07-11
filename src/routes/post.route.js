@@ -7,8 +7,7 @@ const postRouter = express.Router();
 
 postRouter.post(
   '/createPost',
-  verifyToken,
-  multerMiddle().single('image'),
+  [verifyToken, multerMiddle().single('image')],
   createPost
 );
 
